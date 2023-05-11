@@ -1,5 +1,5 @@
 precision mediump float;
 void main() {
     gl_Position = vec4(0.5, 0.0, 0.0, 1.0); // 设置坐标
-    gl_PointSize = 50.0; // 设置尺寸
+    gl_PointSize = 10.0; // 设置尺寸
 }
