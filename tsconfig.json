@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/", 
     "sourceMap": true,
+    "lib": ["DOM","ES2016"],
+    "module": "ESNext",
+    "target": "ES5",
+    "moduleResolution": "node",
+    "strict": true,
+    "removeComments": true,
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
-  }
+    "esModuleInterop": true,
+    "isolatedModules": true
+  },
+  "include": ["./src"]
 }
