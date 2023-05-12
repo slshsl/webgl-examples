@@ -132,5 +132,23 @@ module.exports = {
         html: "./src/pages/e22_multiTexture/index.html", // 页面使用的html模板
         out: "multiTexture.html", // 输出目录中的页面文件名,
         title: "MultiTexture"
+    },
+    lookAtTriangles: {
+        ts: "./src/pages/e23_lookAtTriangles/index.ts", // 页面入口js
+        html: "./src/pages/e23_lookAtTriangles/index.html", // 页面使用的html模板
+        out: "lookAtTriangles.html", // 输出目录中的页面文件名,
+        title: "LookAtTriangles"
+    },
+    lookAtRotatedTriangles: {
+        ts: "./src/pages/e24_lookAtRotatedTriangles/index.ts", // 页面入口js
+        html: "./src/pages/e24_lookAtRotatedTriangles/index.html", // 页面使用的html模板
+        out: "lookAtRotatedTriangles.html", // 输出目录中的页面文件名,
+        title: "LookAtRotatedTriangles"
+    },
+    lookAtRotatedTrianglesMvMatrix: {
+        ts: "./src/pages/e25_lookAtRotatedTrianglesMvMatrix/index.ts", // 页面入口js
+        html: "./src/pages/e25_lookAtRotatedTrianglesMvMatrix/index.html", // 页面使用的html模板
+        out: "lookAtRotatedTrianglesMvMatrix.html", // 输出目录中的页面文件名,
+        title: "LookAtRotatedTrianglesMvMatrix"
     }
 };
