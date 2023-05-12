@@ -42,5 +42,47 @@ module.exports = {
         html: "./src/pages/e07_helloTriangle/index.html", // 页面使用的html模板
         out: "helloTriangle.html", // 输出目录中的页面文件名,
         title: "HelloTriangle"
+    },
+    helloRectangle: {
+        ts: "./src/pages/e08_helloRectangle/index.ts", // 页面入口js
+        html: "./src/pages/e08_helloRectangle/index.html", // 页面使用的html模板
+        out: "helloRectangle.html", // 输出目录中的页面文件名,
+        title: "HelloRectangle"
+    },
+    translatedTriangle: {
+        ts: "./src/pages/e09_translatedTriangle/index.ts", // 页面入口js
+        html: "./src/pages/e09_translatedTriangle/index.html", // 页面使用的html模板
+        out: "translatedTriangle.html", // 输出目录中的页面文件名,
+        title: "TranslatedTriangle"
+    },
+    rotatedTriangle: {
+        ts: "./src/pages/e10_rotatedTriangle/index.ts", // 页面入口js
+        html: "./src/pages/e10_rotatedTriangle/index.html", // 页面使用的html模板
+        out: "rotatedTriangle.html", // 输出目录中的页面文件名,
+        title: "RotatedTriangle"
+    },
+    scaledTriangle: {
+        ts: "./src/pages/e11_scaledTriangle/index.ts", // 页面入口js
+        html: "./src/pages/e11_scaledTriangle/index.html", // 页面使用的html模板
+        out: "scaledTriangle.html", // 输出目录中的页面文件名,
+        title: "ScaledTriangle"
+    },
+    translatedTriangleMatrix: {
+        ts: "./src/pages/e12_translatedTriangleMatrix/index.ts", // 页面入口js
+        html: "./src/pages/e12_translatedTriangleMatrix/index.html", // 页面使用的html模板
+        out: "translatedTriangleMatrix.html", // 输出目录中的页面文件名,
+        title: "TranslatedTriangleMatrix"
+    },
+    rotatedTriangleMatrix: {
+        ts: "./src/pages/e13_rotatedTriangleMatrix/index.ts", // 页面入口js
+        html: "./src/pages/e13_rotatedTriangleMatrix/index.html", // 页面使用的html模板
+        out: "rotatedTriangleMatrix.html", // 输出目录中的页面文件名,
+        title: "RotatedTriangleMatrix"
+    },
+    scaledTriangleMatrix: {
+        ts: "./src/pages/e14_scaledTriangleMatrix/index.ts", // 页面入口js
+        html: "./src/pages/e14_scaledTriangleMatrix/index.html", // 页面使用的html模板
+        out: "scaledTriangleMatrix.html", // 输出目录中的页面文件名,
+        title: "ScaledTriangleMatrix"
     }
 };
