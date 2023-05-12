@@ -186,5 +186,41 @@ module.exports = {
         html: "./src/pages/e31_zfighting/index.html", // 页面使用的html模板
         out: "zfighting.html", // 输出目录中的页面文件名,
         title: "Zfighting"
+    },
+    helloCube: {
+        ts: "./src/pages/e32_helloCube/index.ts", // 页面入口js
+        html: "./src/pages/e32_helloCube/index.html", // 页面使用的html模板
+        out: "helloCube.html", // 输出目录中的页面文件名,
+        title: "HelloCube"
+    },
+    coloredCube: {
+        ts: "./src/pages/e33_coloredCube/index.ts", // 页面入口js
+        html: "./src/pages/e33_coloredCube/index.html", // 页面使用的html模板
+        out: "coloredCube.html", // 输出目录中的页面文件名,
+        title: "ColoredCube"
+    },
+    coloredCubSingleColor: {
+        ts: "./src/pages/e34_coloredCubSingleColor/index.ts", // 页面入口js
+        html: "./src/pages/e34_coloredCubSingleColor/index.html", // 页面使用的html模板
+        out: "coloredCubSingleColor.html", // 输出目录中的页面文件名,
+        title: "ColoredCubSingleColor"
+    },
+    lightedCube: {
+        ts: "./src/pages/e35_lightedCube/index.ts", // 页面入口js
+        html: "./src/pages/e35_lightedCube/index.html", // 页面使用的html模板
+        out: "lightedCube.html", // 输出目录中的页面文件名,
+        title: "LightedCube"
+    },
+    lightedCubeAnimation: {
+        ts: "./src/pages/e36_lightedCubeAnimation/index.ts", // 页面入口js
+        html: "./src/pages/e36_lightedCubeAnimation/index.html", // 页面使用的html模板
+        out: "lightedCubeAnimation.html", // 输出目录中的页面文件名,
+        title: "LightedCubeAnimation"
+    },
+    lightedCubeAmbient: {
+        ts: "./src/pages/e37_lightedCubeAmbient/index.ts", // 页面入口js
+        html: "./src/pages/e37_lightedCubeAmbient/index.html", // 页面使用的html模板
+        out: "lightedCubeAmbient.html", // 输出目录中的页面文件名,
+        title: "LightedCubeAmbient"
     }
 };
