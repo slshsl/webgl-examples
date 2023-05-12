@@ -1,6 +1,7 @@
 import { getWebGLContext, initShaders } from '../../util/webgl-utils'
 import vshader from './shaderSource.vs.glsl'
 import fshader from './shaderSource.fs.glsl'
+import { mat4, glMatrix } from 'gl-matrix';
 
 function main() {
     const canvas = document.getElementById('webgl') as HTMLCanvasElement;
@@ -25,6 +26,38 @@ function main() {
         return;
     }
 
+    let translationMatrix = mat4.create();
+
+    const Tx = 0.5, Ty = 0.5, Tz = 0.0;
+
+    mat4.fromTranslation(translationMatrix, [Tx, Ty, Tz])
+
+    const ANGLE = 90.0;
+
+    let rotationMatrix = mat4.create();
+
+    mat4.fromRotation(rotationMatrix, glMatrix.toRadian(ANGLE), [0.0, 0.0, 1.0]);
+
+    let scalingMatrix = mat4.create();
+
+    const Sx = 1.0, Sy = 1.0, Sz = 1.0;
+
+    mat4.fromScaling(scalingMatrix, [Sx, Sy, Sz]);
+
+    let modelMatrix = mat4.create();
+
+    mat4.multiply(modelMatrix, translationMatrix, rotationMatrix)
+
+    mat4.multiply(modelMatrix, modelMatrix, scalingMatrix)
+
+    const u_ModelMatrix = gl.getUniformLocation(program, 'u_ModelMatrix');
+    if (!u_ModelMatrix) {
+        console.log("Failed to get the storage location of u_ModelMatrix");
+        return;
+    }
+
+    gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix);
+
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -34,7 +67,9 @@ function main() {
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
     const vertices = new Float32Array([
-        0.0, 0.5, -0.5, -0.5, 0.5, -0.5
+        0.0, 0.5,
+        -0.5, -0.5,
+        0.5, -0.5
     ]);
     const n = 3; //点的个数
 

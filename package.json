@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --open --config webpack.dev.js",
+    "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
   "author": "",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/webpack": "^5.28.1",
     "html-webpack-plugin": "^5.5.1",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
@@ -19,5 +20,8 @@
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "gl-matrix": "^3.4.3"
   }
 }

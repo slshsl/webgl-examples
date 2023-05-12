@@ -1,6 +1,6 @@
-import { getWebGLContext, initShaders } from '../../util/webgl-utils'
-import vshader from './shaderSource.vs.glsl'
-import fshader from './shaderSource.fs.glsl'
+import { getWebGLContext, initShaders } from '../../util/webgl-utils';
+import vshader from './shaderSource.vs.glsl';
+import fshader from './shaderSource.fs.glsl';
 
 function main() {
     const canvas = document.getElementById('webgl') as HTMLCanvasElement;
@@ -25,18 +25,24 @@ function main() {
         return;
     }
 
+    //指定清空<canvas>颜色
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
+    //清空<canvas>
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    gl.drawArrays(gl.POINTS, 0, n);
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
-    const vertices = new Float32Array([
-        0.0, 0.5, -0.5, -0.5, 0.5, -0.5
-    ]);
+
     const n = 3; //点的个数
+
+    const vertices = new Float32Array([
+        0.0, 0.5,
+        -0.5, -0.5,
+        0.5, -0.5
+    ]);
 
     //创建缓冲区对象
     const vertexBuffer = gl.createBuffer();
@@ -62,6 +68,35 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
 
     //连接a_Postion变量与分配给它的缓冲区对象
     gl.enableVertexAttribArray(a_Position);
+
+    const sizes = new Float32Array(
+        [10.0, 20.0, 30.0]
+    );
+
+    //创建缓冲区对象
+    const sizeBuffer = gl.createBuffer();
+    if (!sizeBuffer) {
+        console.log("Failed to create thie buffer object");
+        return -1;
+    }
+
+    //将缓冲区对象保存到目标上
+    gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
+
+    //向缓存对象写入数据
+    gl.bufferData(gl.ARRAY_BUFFER, sizes, gl.STATIC_DRAW);
+
+    const a_PointSize = gl.getAttribLocation(program, 'a_PointSize');
+    if (a_PointSize < 0) {
+        console.log("Failed to get the storage location of a_PointSize");
+        return -1;
+    }
+
+    //将缓冲区对象分配给a_Postion变量
+    gl.vertexAttribPointer(a_PointSize, 1, gl.FLOAT, false, 0, 0);
+
+    //连接a_Postion变量与分配给它的缓冲区对象
+    gl.enableVertexAttribArray(a_PointSize);
 
     return n;
 }

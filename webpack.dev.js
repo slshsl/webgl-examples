@@ -8,6 +8,7 @@ const devConfig = {
     devtool: "source-map",
     devServer: {
         static: './dist',
+        open: true
     },
 };
 module.exports = merge(baseConfig, devConfig);

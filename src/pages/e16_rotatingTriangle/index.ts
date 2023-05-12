@@ -1,6 +1,7 @@
-import { getWebGLContext, initShaders } from '../../util/webgl-utils'
-import vshader from './shaderSource.vs.glsl'
-import fshader from './shaderSource.fs.glsl'
+import { getWebGLContext, initShaders } from '../../util/webgl-utils';
+import vshader from './shaderSource.vs.glsl';
+import fshader from './shaderSource.fs.glsl';
+import { mat4, glMatrix } from 'gl-matrix';
 
 function main() {
     const canvas = document.getElementById('webgl') as HTMLCanvasElement;
@@ -25,16 +26,29 @@ function main() {
         return;
     }
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    const u_ModelMatrix = gl.getUniformLocation(program, 'u_ModelMatrix');
+    if (!u_ModelMatrix) {
+        console.log("Failed to get the storage location of u_ModelMatrix");
+        return;
+    }
 
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    let currentAngle = 0.0;
+    const ANGLE_STEP = 45.0;
+    let modelMatrix = mat4.create();
 
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    const tick = function () {
+        currentAngle = getNextAngle(currentAngle, ANGLE_STEP);
+        draw(gl, n, glMatrix.toRadian(currentAngle), modelMatrix, u_ModelMatrix);
+        requestAnimationFrame(tick);
+    };
+    tick();
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
     const vertices = new Float32Array([
-        0.0, 0.5, -0.5, -0.5, 0.5, -0.5
+        0.0, 0.5,
+        -0.5, -0.5,
+        0.5, -0.5
     ]);
     const n = 3; //点的个数
 
@@ -64,6 +78,30 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
     gl.enableVertexAttribArray(a_Position);
 
     return n;
+}
+
+function draw(
+    gl: WebGLRenderingContext,
+    n: number,
+    currentAngle: number,
+    modelMatrix: mat4,
+    u_ModelMatrix: WebGLUniformLocation
+) {
+    mat4.fromRotation(modelMatrix, currentAngle, [0.0, 0.0, 1.0]);
+    gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix);
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, n);
+}
+
+
+let last = Date.now();
+function getNextAngle(angle: number, step: number) {
+    const now = Date.now();
+    const elapsed = (now - last);
+    last = now;
+    let newAngle = angle + (step * elapsed) / 1000.0;
+    return newAngle %= 360;
 }
 
 main();

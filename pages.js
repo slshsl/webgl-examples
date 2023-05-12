@@ -84,5 +84,23 @@ module.exports = {
         html: "./src/pages/e14_scaledTriangleMatrix/index.html", // 页面使用的html模板
         out: "scaledTriangleMatrix.html", // 输出目录中的页面文件名,
         title: "ScaledTriangleMatrix"
+    },
+    mvpMatrix: {
+        ts: "./src/pages/e15_mvpMatrix/index.ts", // 页面入口js
+        html: "./src/pages/e15_mvpMatrix/index.html", // 页面使用的html模板
+        out: "mvpMatrix.html", // 输出目录中的页面文件名,
+        title: "MvpMatrix"
+    },
+    rotatingTriangle: {
+        ts: "./src/pages/e16_rotatingTriangle/index.ts", // 页面入口js
+        html: "./src/pages/e16_rotatingTriangle/index.html", // 页面使用的html模板
+        out: "rotatingTriangle.html", // 输出目录中的页面文件名,
+        title: "RotatingTriangle"
+    },
+    multiAttributeSize: {
+        ts: "./src/pages/e17_multiAttributeSize/index.ts", // 页面入口js
+        html: "./src/pages/e17_multiAttributeSize/index.html", // 页面使用的html模板
+        out: "multiAttributeSize.html", // 输出目录中的页面文件名,
+        title: "MultiAttributeSize"
     }
 };
