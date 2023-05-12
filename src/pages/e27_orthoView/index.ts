@@ -6,6 +6,8 @@ import { mat4 } from 'gl-matrix'
 function main() {
     const canvas = document.getElementById('webgl') as HTMLCanvasElement;
 
+    const nf = document.getElementById("nearFar") as HTMLDivElement;
+
     const gl = getWebGLContext(canvas);
     if (!gl) {
         console.log('Failed to get the rendering context for WebGL');
@@ -26,20 +28,17 @@ function main() {
         return;
     }
 
-    const u_ViewMatrix = gl.getUniformLocation(program, 'u_ViewMatrix');
+    const u_ProjMatrix = gl.getUniformLocation(program, "u_ProjMatrix");
 
     //设置视点、视线、上方向
-    let viewMatrix = mat4.create();
-    mat4.lookAt(viewMatrix, [0.20, 0.25, 0.25], [0, 0, 0], [0, 1, 0])
+    const projMatrix = mat4.create();
 
-    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix);
+    //注册键盘事件响应函数
+    document.onkeydown = function (ev) {
+        keydown(ev, gl, n, u_ProjMatrix!, projMatrix, nf);
+    };
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
-    //清空<canvas>
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    draw(gl, n, u_ProjMatrix!, projMatrix, nf);
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
@@ -55,9 +54,9 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
         -0.5, 0.4, -0.2, 1.0, 1.0, 0.4,
         0.0, -0.6, -0.2, 1.0, 1.0, 0.4,
 
-        0.0, 0.5, 0.0, 0.4, 0.4, 1.0,  // The front blue one
-        -0.5, -0.5, 0.0, 0.4, 0.4, 1.0,
-        0.5, -0.5, 0.0, 1.0, 0.4, 0.4
+        -0.5, 0.0, 0.0, 0.4, 0.4, 1.0,  // The front blue one
+        0.5, -0.5, 0.0, 0.4, 0.4, 1.0,
+        0.5, 0.5, 0.0, 1.0, 0.4, 0.4
     ]);
 
     const FSIZE = verticesColors.BYTES_PER_ELEMENT;
@@ -100,6 +99,63 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
     gl.enableVertexAttribArray(a_Color);
 
     return n;
+}
+
+
+let g_near = 0.0,
+    g_far = 0.5;
+function keydown(
+    ev: KeyboardEvent,
+    gl: WebGLRenderingContext,
+    n: number,
+    u_ProjMatrix: WebGLUniformLocation,
+    projMatrix: mat4,
+    nf: HTMLDivElement
+) {
+    switch (ev.keyCode) {
+        case 39:
+            g_near += 0.01;
+            break; //right
+        case 37:
+            g_near -= 0.01;
+            break; //left
+        case 38:
+            g_far += 0.01;
+            break; //up
+        case 40:
+            g_far -= 0.01;
+            break; //down
+        default:
+            return;
+    }
+    draw(gl, n, u_ProjMatrix, projMatrix, nf);
+}
+
+function draw(
+    gl: WebGLRenderingContext,
+    n: number,
+    u_ProjMatrix: WebGLUniformLocation,
+    projMatrix: mat4,
+    nf: HTMLDivElement
+) {
+    //设置视点和视线
+    mat4.ortho(projMatrix, -1, 1, -1, 1, g_near, g_far);
+
+    //将视图矩阵传递给u_ViewMatrix变量
+    gl.uniformMatrix4fv(u_ProjMatrix, false, projMatrix);
+
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    //innerHTML在JS是双向功能：获取对象的内容  或  向对象插入内容；
+    nf.innerHTML =
+        "near: " +
+        Math.round(g_near * 100) / 100 +
+        ", far: " +
+        Math.round(g_far * 100) / 100;
+
+    gl.drawArrays(gl.TRIANGLES, 0, n);
 }
 
 main();

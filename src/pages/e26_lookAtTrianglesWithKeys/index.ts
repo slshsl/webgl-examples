@@ -26,20 +26,17 @@ function main() {
         return;
     }
 
-    const u_ViewMatrix = gl.getUniformLocation(program, 'u_ViewMatrix');
+    const u_ViewMatrix = gl.getUniformLocation(program, "u_ViewMatrix");
 
     //设置视点、视线、上方向
-    let viewMatrix = mat4.create();
-    mat4.lookAt(viewMatrix, [0.20, 0.25, 0.25], [0, 0, 0], [0, 1, 0])
+    const viewMatrix = mat4.create();
 
-    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix);
+    //注册键盘事件响应函数
+    document.onkeydown = function (ev) {
+        keydown(ev, gl, n, u_ViewMatrix!, viewMatrix);
+    };
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
-    //清空<canvas>
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    draw(gl, n, u_ViewMatrix!, viewMatrix);
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
@@ -100,6 +97,49 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
     gl.enableVertexAttribArray(a_Color);
 
     return n;
+}
+
+
+let g_eyeX = 0.2,
+    g_eyeY = 0.25,
+    g_eyeZ = 0.25; //视点
+function keydown(
+    ev: KeyboardEvent,
+    gl: WebGLRenderingContext,
+    n: number,
+    u_ViewMatrix: WebGLUniformLocation,
+    viewMatrix: mat4
+) {
+    console.log(ev.keyCode);
+    if (ev.keyCode == 39) {
+        //按下右键
+        g_eyeX += 0.01;
+    } else if (ev.keyCode == 37) {
+        //按下左键
+        g_eyeX -= 0.01;
+    } else {
+        return;
+    }
+    draw(gl, n, u_ViewMatrix, viewMatrix);
+}
+
+function draw(
+    gl: WebGLRenderingContext,
+    n: number,
+    u_ViewMatrix: WebGLUniformLocation,
+    viewMatrix: mat4
+) {
+    //设置视点和视线
+    mat4.lookAt(viewMatrix, [g_eyeX, g_eyeY, g_eyeZ], [0, 0, 0], [0, 1, 0]);
+
+    //将视图矩阵传递给u_ViewMatrix变量
+    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix);
+
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.drawArrays(gl.TRIANGLES, 0, n);
 }
 
 main();

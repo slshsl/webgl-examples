@@ -103,7 +103,7 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
     }
 
     //将缓冲区对象分配给a_Color变量
-    gl.vertexAttribPointer(a_Color, 2, gl.FLOAT, false, FSIZE * 6, FSIZE * 3);
+    gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 6, FSIZE * 3);
 
     //连接a_Color变量与分配给它的缓冲区对象
     gl.enableVertexAttribArray(a_Color);

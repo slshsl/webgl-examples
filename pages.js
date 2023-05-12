@@ -150,5 +150,41 @@ module.exports = {
         html: "./src/pages/e25_lookAtRotatedTrianglesMvMatrix/index.html", // 页面使用的html模板
         out: "lookAtRotatedTrianglesMvMatrix.html", // 输出目录中的页面文件名,
         title: "LookAtRotatedTrianglesMvMatrix"
+    },
+    lookAtTrianglesWithKeys: {
+        ts: "./src/pages/e26_lookAtTrianglesWithKeys/index.ts", // 页面入口js
+        html: "./src/pages/e26_lookAtTrianglesWithKeys/index.html", // 页面使用的html模板
+        out: "lookAtTrianglesWithKeys.html", // 输出目录中的页面文件名,
+        title: "LookAtTrianglesWithKeys"
+    },
+    orthoView: {
+        ts: "./src/pages/e27_orthoView/index.ts", // 页面入口js
+        html: "./src/pages/e27_orthoView/index.html", // 页面使用的html模板
+        out: "orthoView.html", // 输出目录中的页面文件名,
+        title: "OrthoView"
+    },
+    perspectiveview: {
+        ts: "./src/pages/e28_perspectiveview/index.ts", // 页面入口js
+        html: "./src/pages/e28_perspectiveview/index.html", // 页面使用的html模板
+        out: "perspectiveview.html", // 输出目录中的页面文件名,
+        title: "Perspectiveview"
+    },
+    perspectiveviewMvp: {
+        ts: "./src/pages/e29_perspectiveviewMvp/index.ts", // 页面入口js
+        html: "./src/pages/e29_perspectiveviewMvp/index.html", // 页面使用的html模板
+        out: "perspectiveviewMvp.html", // 输出目录中的页面文件名,
+        title: "PerspectiveviewMvp"
+    },
+    depthBuffer: {
+        ts: "./src/pages/e30_depthBuffer/index.ts", // 页面入口js
+        html: "./src/pages/e30_depthBuffer/index.html", // 页面使用的html模板
+        out: "depthBuffer.html", // 输出目录中的页面文件名,
+        title: "DepthBuffer"
+    },
+    zfighting: {
+        ts: "./src/pages/e31_zfighting/index.ts", // 页面入口js
+        html: "./src/pages/e31_zfighting/index.html", // 页面使用的html模板
+        out: "zfighting.html", // 输出目录中的页面文件名,
+        title: "Zfighting"
     }
 };
