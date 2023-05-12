@@ -102,5 +102,35 @@ module.exports = {
         html: "./src/pages/e17_multiAttributeSize/index.html", // 页面使用的html模板
         out: "multiAttributeSize.html", // 输出目录中的页面文件名,
         title: "MultiAttributeSize"
+    },
+    multiAttributeSizeInterleaved: {
+        ts: "./src/pages/e18_multiAttributeSizeInterleaved/index.ts", // 页面入口js
+        html: "./src/pages/e18_multiAttributeSizeInterleaved/index.html", // 页面使用的html模板
+        out: "multiAttributeSizeInterleaved.html", // 输出目录中的页面文件名,
+        title: "MultiAttributeSizeInterleaved"
+    },
+    multiAttributeColor: {
+        ts: "./src/pages/e19_multiAttributeColor/index.ts", // 页面入口js
+        html: "./src/pages/e19_multiAttributeColor/index.html", // 页面使用的html模板
+        out: "multiAttributeColor.html", // 输出目录中的页面文件名,
+        title: "MultiAttributeColor"
+    },
+    coloredTriangle: {
+        ts: "./src/pages/e20_coloredTriangle/index.ts", // 页面入口js
+        html: "./src/pages/e20_coloredTriangle/index.html", // 页面使用的html模板
+        out: "coloredTriangle.html", // 输出目录中的页面文件名,
+        title: "ColoredTriangle"
+    },
+    texturedQuad: {
+        ts: "./src/pages/e21_texturedQuad/index.ts", // 页面入口js
+        html: "./src/pages/e21_texturedQuad/index.html", // 页面使用的html模板
+        out: "texturedQuad.html", // 输出目录中的页面文件名,
+        title: "TexturedQuad"
+    },
+    multiTexture: {
+        ts: "./src/pages/e22_multiTexture/index.ts", // 页面入口js
+        html: "./src/pages/e22_multiTexture/index.html", // 页面使用的html模板
+        out: "multiTexture.html", // 输出目录中的页面文件名,
+        title: "MultiTexture"
     }
 };

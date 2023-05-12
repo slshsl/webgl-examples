@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "allowJs": true,
     "esModuleInterop": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "include": ["./src"]
 }

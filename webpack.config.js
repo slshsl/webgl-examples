@@ -57,7 +57,19 @@ module.exports = {
             }, {
                 test: /\.glsl$/,
                 type: 'asset/source'
-            }
+            }, {
+                // 各种图片、字体文件，均交给 url-loader 处理
+                test: /\.(png)|(gif)|(jpg)|(svg)|(bmp)|(eot)|(woff)|(ttf)$/i,
+                type: 'asset',
+                generator: {
+                    filename: 'static/[hash][ext][query]'
+                },
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024 // 4kb
+                    }
+                }
+            },
         ],
     },
     plugins: [
