@@ -222,5 +222,23 @@ module.exports = {
         html: "./src/pages/e37_lightedCubeAmbient/index.html", // 页面使用的html模板
         out: "lightedCubeAmbient.html", // 输出目录中的页面文件名,
         title: "LightedCubeAmbient"
+    },
+    pointLightedCube: {
+        ts: "./src/pages/e38_pointLightedCube/index.ts", // 页面入口js
+        html: "./src/pages/e38_pointLightedCube/index.html", // 页面使用的html模板
+        out: "pointLightedCube.html", // 输出目录中的页面文件名,
+        title: "PointLightedCube"
+    },
+    pointLightedCubeAnimation: {
+        ts: "./src/pages/e39_pointLightedCubeAnimation/index.ts", // 页面入口js
+        html: "./src/pages/e39_pointLightedCubeAnimation/index.html", // 页面使用的html模板
+        out: "pointLightedCubeAnimation.html", // 输出目录中的页面文件名,
+        title: "PointLightedCubeAnimation"
+    },
+    pointLightedCubePerFragment: {
+        ts: "./src/pages/e40_pointLightedCubePerFragment/index.ts", // 页面入口js
+        html: "./src/pages/e40_pointLightedCubePerFragment/index.html", // 页面使用的html模板
+        out: "pointLightedCubePerFragment.html", // 输出目录中的页面文件名,
+        title: "PointLightedCubePerFragment"
     }
 };
