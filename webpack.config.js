@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // 处理模板页面
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 打包css文件
 const pages = require("./pages"); // 加载多页配置
 
 // 获取入口配置
@@ -70,10 +71,20 @@ module.exports = {
                     }
                 }
             },
+            {
+                // 所有的 css 和 pcss 文件均交给 postcss 处理
+                test: /\.(css)$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            }
         ],
     },
     plugins: [
         ...getHtmlPlugins(), // 应用所有页面模板，输出到指定的目录
+        new MiniCssExtractPlugin({
+            // 打包 css 代码 到文件中
+            filename: "css/[name].css",
+            chunkFilename: "css/common.[hash:5].css" // 针对公共样式的文件名
+        }),
     ],
 };
 
