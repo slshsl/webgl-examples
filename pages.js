@@ -246,5 +246,53 @@ module.exports = {
         html: "./src/pages/e40_pointLightedCubePerFragment/index.html", // 页面使用的html模板
         out: "pointLightedCubePerFragment.html", // 输出目录中的页面文件名,
         title: "PointLightedCubePerFragment"
+    },
+    rotateObject: {
+        ts: "./src/pages/e41_rotateObject/index.ts", // 页面入口js
+        html: "./src/pages/e41_rotateObject/index.html", // 页面使用的html模板
+        out: "rotateObject.html", // 输出目录中的页面文件名,
+        title: "RotateObject"
+    },
+    pickObject: {
+        ts: "./src/pages/e42_pickObject/index.ts", // 页面入口js
+        html: "./src/pages/e42_pickObject/index.html", // 页面使用的html模板
+        out: "pickObject.html", // 输出目录中的页面文件名,
+        title: "PickObject"
+    },
+    pickFace: {
+        ts: "./src/pages/e43_pickFace/index.ts", // 页面入口js
+        html: "./src/pages/e43_pickFace/index.html", // 页面使用的html模板
+        out: "pickFace.html", // 输出目录中的页面文件名,
+        title: "PickFace"
+    },
+    fog: {
+        ts: "./src/pages/e44_fog/index.ts", // 页面入口js
+        html: "./src/pages/e44_fog/index.html", // 页面使用的html模板
+        out: "fog.html", // 输出目录中的页面文件名,
+        title: "Fog"
+    },
+    fogW: {
+        ts: "./src/pages/e45_fogW/index.ts", // 页面入口js
+        html: "./src/pages/e45_fogW/index.html", // 页面使用的html模板
+        out: "fogW.html", // 输出目录中的页面文件名,
+        title: "FogW"
+    },
+    roundedPoints: {
+        ts: "./src/pages/e46_RoundedPoints/index.ts", // 页面入口js
+        html: "./src/pages/e46_RoundedPoints/index.html", // 页面使用的html模板
+        out: "roundedPoints.html", // 输出目录中的页面文件名,
+        title: "RoundedPoints"
+    },
+    lookAtBlendedTriangles: {
+        ts: "./src/pages/e47_lookAtBlendedTriangles/index.ts", // 页面入口js
+        html: "./src/pages/e47_lookAtBlendedTriangles/index.html", // 页面使用的html模板
+        out: "lookAtBlendedTriangles.html", // 输出目录中的页面文件名,
+        title: "LookAtBlendedTriangles"
+    },
+    blendedCube: {
+        ts: "./src/pages/e48_blendedCube/index.ts", // 页面入口js
+        html: "./src/pages/e48_blendedCube/index.html", // 页面使用的html模板
+        out: "blendedCube.html", // 输出目录中的页面文件名,
+        title: "BlendedCube"
     }
 };
