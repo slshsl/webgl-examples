@@ -15,6 +15,8 @@ export function initShaders(gl: WebGLRenderingContext, vshader: string, fshader:
 
     gl.useProgram(program);
 
+    (gl as any).program = program;
+
     return program;
 }
 

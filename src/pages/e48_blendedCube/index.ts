@@ -29,7 +29,7 @@ function main() {
     gl.clearColor(0, 0, 0, 1);
 
     //开启隐藏面消除
-    gl.enable(gl.DEPTH_TEST);
+    // gl.enable(gl.DEPTH_TEST);
     // Enable alpha blending
     gl.enable(gl.BLEND);
     // Set blending function
@@ -125,7 +125,7 @@ function initArrayBuffer(
     type: number,
     attribute: string
 ) {
-    var buffer = gl.createBuffer();   // Create a buffer object
+    const buffer = gl.createBuffer();   // Create a buffer object
     if (!buffer) {
         console.log('Failed to create the buffer object');
         return false;
@@ -134,7 +134,7 @@ function initArrayBuffer(
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
     // Assign the buffer object to the attribute variable
-    var a_attribute = gl.getAttribLocation(program, attribute);
+    const a_attribute = gl.getAttribLocation(program, attribute);
     if (a_attribute < 0) {
         console.log('Failed to get the storage location of ' + attribute);
         return false;

@@ -2,6 +2,7 @@ import { getWebGLContext, initShaders } from '../../util/webgl-utils'
 import vshader from './shaderSource.vs.glsl'
 import fshader from './shaderSource.fs.glsl'
 import { mat4 } from 'gl-matrix'
+import * as THREE from 'three'
 
 function main() {
     const canvas = document.getElementById('webgl') as HTMLCanvasElement;
@@ -39,6 +40,32 @@ function main() {
     };
 
     draw(gl, n, u_ProjMatrix!, projMatrix, nf);
+
+    const m1 = new THREE.Matrix4();
+
+    m1.makeOrthographic(-1, 1, 1, -1, -1, 1)
+
+    console.log(m1)
+
+    const v1 = new THREE.Vector4(0.0, 0.5, 0.4, 1.0);
+
+    console.log(v1.applyMatrix4(m1))
+
+    const m2 = new THREE.Matrix4();
+    const eye = new THREE.Vector3(0, 0, 2);
+    const target = new THREE.Vector3(0, 0, 0);
+    const up = new THREE.Vector3(0, 1, 0);
+    m2.lookAt(eye, target, up);
+    console.log(m2)
+
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+    camera.position.set(1, 1, 2);
+    camera.lookAt(0, 0, 0);
+    camera.up.set(0, 1, 0)
+
+    console.log(camera)
+
+
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): number {
@@ -46,7 +73,7 @@ function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram): nu
     const n = 9; //点的个数
 
     const verticesColors = new Float32Array([
-        0.0, 0.5, -0.4, 0.4, 1.0, 0.4, // The back green one
+        0.0, 0.5, 0.4, 0.4, 1.0, 0.4, // The back green one
         -0.5, -0.5, -0.4, 0.4, 1.0, 0.4,
         0.5, -0.5, -0.4, 1.0, 0.4, 0.4,
 

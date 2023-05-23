@@ -294,5 +294,11 @@ module.exports = {
         html: "./src/pages/e48_blendedCube/index.html", // 页面使用的html模板
         out: "blendedCube.html", // 输出目录中的页面文件名,
         title: "BlendedCube"
+    },
+    framebufferObject: {
+        ts: "./src/pages/e49_framebufferObject/index.ts", // 页面入口js
+        html: "./src/pages/e49_framebufferObject/index.html", // 页面使用的html模板
+        out: "framebufferObject.html", // 输出目录中的页面文件名,
+        title: "FramebufferObject"
     }
 };
