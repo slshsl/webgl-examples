@@ -300,5 +300,11 @@ module.exports = {
         html: "./src/pages/e49_framebufferObject/index.html", // 页面使用的html模板
         out: "framebufferObject.html", // 输出目录中的页面文件名,
         title: "FramebufferObject"
+    },
+    glPosition: {
+        ts: "./src/pages/e50_glPosition/index.ts", // 页面入口js
+        html: "./src/pages/e50_glPosition/index.html", // 页面使用的html模板
+        out: "glPosition.html", // 输出目录中的页面文件名,
+        title: "GlPosition"
     }
 };
